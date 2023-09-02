@@ -1,0 +1,656 @@
+{
+	"info": {
+		"_postman_id": "2936ecdc-b425-4c67-ab48-b6f4b3c3a8eb",
+		"name": "Strapi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28335950"
+	},
+	"item": [
+		{
+			"name": "User & Auth",
+			"item": [
+				{
+					"name": "Login  User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "identifier",
+									"value": "test001",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:1337/api/auth/local",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"auth",
+								"local"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "test002",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "test002@test.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:1337/api/auth/local/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"auth",
+								"local",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNjkzNTU4NzM4LCJleHAiOjE2OTYxNTA3Mzh9.voFkR1TqCKHu0Ie1OJVYo8Oz9kQ1XwIzLQjnlboTMrI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:1337/api/users/me?populate=orders.products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"users",
+								"me"
+							],
+							"query": [
+								{
+									"key": "populate",
+									"value": "orders.products"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send Email Confirmation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1337/api/auth/send-email-confirmation",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"auth",
+								"send-email-confirmation"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send Email Forgot Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1337/api/auth/forgot-password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"auth",
+								"forgot-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send Email Reset Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"code\": \"926f12e43ad76b8182517b95a22906dc0bd3faf63bccfcc3e7178386bf8b1b9f9f100d56a26876dde44f89dddc9dd6f0f75effdb6a557c9c1ac40cc6f91c50ab\",\n    \"password\": \"111222\",\n    \"passwordConfirmation\": \"111222\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1337/api/auth/reset-password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"auth",
+								"reset-password"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get All",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1337/api/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get users (API Token)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "2b5bdad932b7fddd9590dfcf32c020613a4ac66abeb5c3645b5b7d0f00c27cf8c7032b76fdcaaf6799b5b6bf4f11231488a6b0cf1e5926c2600a6e2339e27238ece3cdf0ae4c4e7e3321740ec957530b8573754ec43f9d7cd867747ddf5c7810f71b2247111d41f966359f749cf6b07fa4492af1b83368651b7208c945272848",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1337/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All (img & file)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1337/api/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All (pagination)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1337/api/assets?populate=*",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"api",
+						"assets"
+					],
+					"query": [
+						{
+							"key": "populate",
+							"value": "*"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All (sort)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1337/api/products?sort[0]=price:desc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"api",
+						"products"
+					],
+					"query": [
+						{
+							"key": "sort[0]",
+							"value": "price:desc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All (publicationState)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1337/api/products?publicationState=preview",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"api",
+						"products"
+					],
+					"query": [
+						{
+							"key": "publicationState",
+							"value": "preview"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All (populate)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1337/api/products/3?populate[0]=image",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"api",
+						"products",
+						"3"
+					],
+					"query": [
+						{
+							"key": "populate[0]",
+							"value": "image"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All (field)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1337/api/products?fields[0]=name&fields[1]=price",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"api",
+						"products"
+					],
+					"query": [
+						{
+							"key": "fields[0]",
+							"value": "name"
+						},
+						{
+							"key": "fields[1]",
+							"value": "price"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All (filters)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1337/api/products?filters[$and][0][name][$eq][0]=shoes&filters[$and][1][price][$eq][1]=499",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"api",
+						"products"
+					],
+					"query": [
+						{
+							"key": "filters[$and][0][name][$eq][0]",
+							"value": "shoes"
+						},
+						{
+							"key": "filters[$and][1][price][$eq][1]",
+							"value": "499"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Item (findOne)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1337/api/products/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"api",
+						"products",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Item (findOne) Copy",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1337/api/products/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"api",
+						"products",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET All (relation)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1337/api/products?populate=*",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"api",
+						"products"
+					],
+					"query": [
+						{
+							"key": "populate",
+							"value": "*"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Entty",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"data\": {\n        \"name\": \"test9\",\n        \"price\": 100,\n        \"description\": \"\",\n        \"stock\": 10,\n        \"status\": \"true\",\n        \"locale\": \"en\",\n        \"content\": \"\",\n        \"category\": 1\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1337/api/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Entty (upload img)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "files.single_img",
+							"type": "file",
+							"src": "/Users/apple/Downloads/Okkbee/Assets/Screenshot 2566-09-01 at 00.35.03.png"
+						},
+						{
+							"key": "files.multiple_img",
+							"type": "file",
+							"src": [
+								"/Users/apple/Downloads/Okkbee/Assets/Screenshot 2566-08-31 at 00.03.58.png",
+								"/Users/apple/Downloads/Okkbee/Assets/Screenshot 2566-08-31 at 00.04.03.png",
+								"/Users/apple/Downloads/Okkbee/Assets/Screenshot 2566-08-31 at 23.26.57.png",
+								"/Users/apple/Downloads/Okkbee/Assets/Screenshot 2566-08-31 at 23.30.26.png"
+							]
+						},
+						{
+							"key": "data",
+							"value": "{}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:1337/api/assets",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"api",
+						"assets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Entty (locale)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"data\": {\n        \"name\": \"test3\",\n        \"price\": 50,\n        \"description\": \"\",\n        \"stock\": 1,\n        \"status\": \"true\",\n        \"locale\": \"th\",\n        \"content\": \"\",\n        \"category\": 1\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1337/api/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Entty",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"data\": {\n        \"name\": \"test2\",\n        \"price\": 100,\n        \"description\": \"\",\n        \"stock\": 10,\n        \"status\": \"true\",\n        \"locale\": \"en\",\n        \"category\": 1\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1337/api/products/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"api",
+						"products",
+						"5"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
